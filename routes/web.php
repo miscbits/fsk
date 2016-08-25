@@ -18,3 +18,4 @@ Route::get('/home', 'HomeController@index');
 
 Route::resource('Events', 'EventsController');
 Route::resource('Songs', 'SongsController');
+Route::resource('Users', 'UserController');
