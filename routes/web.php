@@ -16,6 +16,6 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::get('/home', 'HomeController@index');
 
-Route::resource('Events', 'EventsController');
-Route::resource('Songs', 'SongsController');
-Route::resource('Users', 'UsersController');
+Route::resource('events', 'EventsController');
+Route::resource('songs', 'SongsController');
+Route::resource('users', 'UsersController');
