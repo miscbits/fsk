@@ -45,10 +45,6 @@ class invite extends Command
         $key = str_random(20);
         $regtoken = Regtoken::create(['token'=>$key]);
         $this->comment($key);
-        $job = (new RemoveOldTokens($regtoken))
-        ->delay(Carbon::now()->addDay());
-
-        dispatch($job);
 
         Mail::to($this->argument('email'))->send(new EmailInvite($regtoken));
     }
