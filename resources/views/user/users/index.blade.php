@@ -8,15 +8,12 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th> Name </th><th> Bio </th><th>Actions</th>
+                    <th> Name </th><th> Bio </th><th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-            {{-- */$x=0;/* --}}
             @foreach($users as $item)
-                {{-- */$x++;/* --}}
                 <tr>
-                    <td>{{ $x }}</td>
                     <td>{{ $item->name }}</td><td>{{ $item->bio }}</td>
                     <td>
                         <a href="{{ url('/users/' . $item->id) }}" class="btn btn-success btn-xs" title="View user"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
