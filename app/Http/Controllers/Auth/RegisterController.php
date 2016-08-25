@@ -6,6 +6,8 @@ use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Regtoken;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
@@ -54,6 +56,14 @@ class RegisterController extends Controller
         ]);
     }
 
+    public function showRegistrationForm($token)
+    {
+        if(Regtoken::where('token', $token)->first()) {
+            return view('auth.register');
+        }
+        return redirect($this->redirectTo);
+    }
+
     /**
      * Create a new user instance after a valid registration.
      *
@@ -65,6 +75,7 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'bio' => '',
             'password' => bcrypt($data['password']),
         ]);
     }
