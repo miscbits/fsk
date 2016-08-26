@@ -8,14 +8,16 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th> Title </th><th> Artist </th><th>Actions</th>
+                    <th>S.No</th><th> Title </th><th> Artist </th><th>Link</th><th>Actions</th>
                 </tr>
             </thead>
             <tbody>
             @foreach($songs as $item)
                 <tr>
                     <td>{{ $loop->index + 1 }}</td>
-                    <td>{{ $item->title }}</td><td>{{ $item->artist }}</td>
+                    <td>{{ $item->title }}</td>
+                    <td>{{ $item->artist }}</td>
+                    <td><a href="{{ $item->link }}">{{ $item->link }}</a></td>
                     <td>
                         <a href="{{ url('/songs/' . $item->id) }}" class="btn btn-success btn-xs" title="View Song"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
                         <a href="{{ url('/songs/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Song"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>

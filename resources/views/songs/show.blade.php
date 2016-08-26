@@ -24,7 +24,7 @@
                 <tr>
                     <th>ID</th><td>{{ $song->id }}</td>
                 </tr>
-                <tr><th> Title </th><td> {{ $song->title }} </td></tr><tr><th> Artist </th><td> {{ $song->artist }} </td></tr>
+                <tr><th> Title </th><td> {{ $song->title }} </td></tr><tr><th> Artist </th><td> {{ $song->artist }} </td><th> Link </th><td> <a href="{{ $song->link }}">{{ $song->link }}</a> </td></tr>
             </tbody>
         </table>
     </div>
