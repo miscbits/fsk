@@ -12,11 +12,9 @@
                 </tr>
             </thead>
             <tbody>
-            {{-- */$x=0;/* --}}
             @foreach($songs as $item)
-                {{-- */$x++;/* --}}
                 <tr>
-                    <td>{{ $x }}</td>
+                    <td>{{ $loop->index }}</td>
                     <td>{{ $item->title }}</td><td>{{ $item->artist }}</td>
                     <td>
                         <a href="{{ url('/songs/' . $item->id) }}" class="btn btn-success btn-xs" title="View Song"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>

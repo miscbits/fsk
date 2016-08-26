@@ -12,11 +12,9 @@
                 </tr>
             </thead>
             <tbody>
-            {{-- */$x=0;/* --}}
             @foreach($events as $item)
-                {{-- */$x++;/* --}}
                 <tr>
-                    <td>{{ $x }}</td>
+                    <td>{{ $loop->index }}</td>
                     <td>{{ $item->title }}</td><td>{{ $item->location }}</td><td>{{ $item->time }}</td>
                     <td>
                         <a href="{{ url('/events/' . $item->id) }}" class="btn btn-success btn-xs" title="View Event"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
