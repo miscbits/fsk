@@ -14,7 +14,7 @@
             <tbody>
             @foreach($songs as $item)
                 <tr>
-                    <td>{{ $loop->index }}</td>
+                    <td>{{ $loop->index + 1 }}</td>
                     <td>{{ $item->title }}</td><td>{{ $item->artist }}</td>
                     <td>
                         <a href="{{ url('/songs/' . $item->id) }}" class="btn btn-success btn-xs" title="View Song"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>

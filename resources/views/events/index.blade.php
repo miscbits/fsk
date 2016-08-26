@@ -14,7 +14,7 @@
             <tbody>
             @foreach($events as $item)
                 <tr>
-                    <td>{{ $loop->index }}</td>
+                    <td>{{ $loop->index + 1 }}</td>
                     <td>{{ $item->title }}</td><td>{{ $item->location }}</td><td>{{ $item->time }}</td>
                     <td>
                         <a href="{{ url('/events/' . $item->id) }}" class="btn btn-success btn-xs" title="View Event"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
