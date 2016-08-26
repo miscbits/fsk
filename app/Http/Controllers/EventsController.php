@@ -13,7 +13,8 @@ use Session;
 class EventsController extends Controller
 {
     public function __construct() {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['calendar']]);
+        $this->middleware('role:admin|leader|ops', ['except'=['calendar', 'index']]);
     }
 
     /**
@@ -21,6 +22,13 @@ class EventsController extends Controller
      *
      * @return void
      */
+    public function calendar()
+    {
+        $events = Event::orderBy('time', 'desc')->paginate(6);
+
+        return view('events.calendar', compact('events'));
+    }
+
     public function index()
     {
         $events = Event::paginate(15);

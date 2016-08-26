@@ -4,14 +4,7 @@
 <div class="container">
 
     <h1>Events <a href="{{ url('/events/create') }}" class="btn btn-primary btn-xs" title="Add New Event"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
-    <div class="table">
-        <table class="table table-bordered table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>S.No</th><th> Title </th><th> Location </th><th> Time </th> @if(Auth::user()->hasRole(['admin', 'leader', 'ops'])) <th>Actions</th> @endif
-                </tr>
-            </thead>
-            <tbody>
+    <div>
             @foreach($events as $item)
                 <tr>
                     <td>{{ $loop->index + 1 }}</td>
@@ -36,8 +29,6 @@
                     @endif
                 </tr>
             @endforeach
-            </tbody>
-        </table>
         <div class="pagination-wrapper"> {!! $events->render() !!} </div>
     </div>
 
