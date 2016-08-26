@@ -79,4 +79,15 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return User
+     */
+    protected function handleNoToken(array $data)
+    {
+        return redirect('/login');
+    }
 }

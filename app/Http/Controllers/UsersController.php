@@ -9,9 +9,14 @@ use App\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
+use Auth;
 
 class UsersController extends Controller
 {
+
+    public function __construct() {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -67,14 +72,18 @@ class UsersController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     * @param  Request  $request
      *
      * @return void
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         $user = User::findOrFail($id);
+        if(Auth::user()->id == $user->id || Auth::user()->hasRole('admin')){
+            return view('user.users.edit', compact('user'));
+        }
+        abort(403, 'Unauthorized action.');
 
-        return view('user.users.edit', compact('user'));
     }
 
     /**
