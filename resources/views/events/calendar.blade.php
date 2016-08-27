@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-    <h1>Events <a href="{{ url('/events/create') }}" class="btn btn-primary btn-xs" title="Add New Event"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+    <h1>Events</h1>
     <div>
             @foreach($events as $item)
                 <div class="container">
