@@ -48,7 +48,7 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
-                    <li><a href="{{ url('/calendar') }}">Caledar</a></li>
+                    <li><a href="{{ url('/') }}">Calendar</a></li>
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">Login</a></li>
                     @else

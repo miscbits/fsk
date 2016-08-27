@@ -180,6 +180,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         //entrust
         Zizaco\Entrust\EntrustServiceProvider::class,
+        Aws\Laravel\AwsServiceProvider::class,
 
     ],
 
@@ -230,6 +231,7 @@ return [
         'Form'      => Collective\Html\FormFacade::class,
         'HTML'      => Collective\Html\HtmlFacade::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+        'AWS' => Aws\Laravel\AwsFacade::class,
 
     ],
 

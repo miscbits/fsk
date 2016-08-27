@@ -9,12 +9,13 @@ use App\Event;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
+use Input;
 
 class EventsController extends Controller
 {
     public function __construct() {
         $this->middleware('auth', ['except' => ['calendar']]);
-        $this->middleware('role:admin|leader|ops', ['except'=['calendar', 'index']]);
+        $this->middleware('role:admin|leader|ops', ['except'=>['calendar', 'index']]);
     }
 
     /**
@@ -53,8 +54,17 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
+        $input = $request->all();
+        $image = $request->file('image');
         
-        Event::create($request->all());
+        $imageFileName = time() . '.' . $image->getClientOriginalExtension();
+
+        $s3 = \Storage::disk('s3');
+        $filePath = '/events/' . $imageFileName;
+        $s3->put($filePath, file_get_contents($image), 'public');
+
+        $input['image'] = $filePath;
+        Event::create($input);
 
         Session::flash('flash_message', 'Event added!');
 

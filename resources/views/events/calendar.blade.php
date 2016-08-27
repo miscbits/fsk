@@ -6,28 +6,30 @@
     <h1>Events <a href="{{ url('/events/create') }}" class="btn btn-primary btn-xs" title="Add New Event"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
     <div>
             @foreach($events as $item)
-                <tr>
-                    <td>{{ $loop->index + 1 }}</td>
-                    <td>{{ $item->title }}</td><td>{{ $item->location }}</td><td>{{ $item->time }}</td>
-                    @if(Auth::user()->hasRole(['admin', 'leader', 'ops']))
-                        <td>
-                            <a href="{{ url('/events/' . $item->id) }}" class="btn btn-success btn-xs" title="View Event"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
-                            <a href="{{ url('/events/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Event"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
-                            {!! Form::open([
-                                'method'=>'DELETE',
-                                'url' => ['/events', $item->id],
-                                'style' => 'display:inline'
-                            ]) !!}
-                                {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Event" />', array(
-                                        'type' => 'submit',
-                                        'class' => 'btn btn-danger btn-xs',
-                                        'title' => 'Delete Event',
-                                        'onclick'=>'return confirm("Confirm delete?")'
-                                ));!!}
-                            {!! Form::close() !!}
-                        </td>
-                    @endif
-                </tr>
+                <div class="container">
+                    <div class="row">
+                        <!-- Card Projects -->
+                        <div class="col-md-6 col-md-offset-3">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img class="img-responsive" src="{{ $item->image }}">
+                                    <span class="card-title">{{ $item->title }}</span>
+                                </div>
+                                
+                                <div class="card-content">
+                                    <p>{{ $item->location }} on {{ $item->time->format('M d, Y') }} at {{ $item->time->format('g:iA') }}</p>
+                                </div>
+                                
+                                <div class="card-description">
+                                    {{$item->description}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    
+                    
+                    
             @endforeach
         <div class="pagination-wrapper"> {!! $events->render() !!} </div>
     </div>
