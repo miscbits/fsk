@@ -17,7 +17,7 @@
                     <td>{{ $loop->index + 1 }}</td>
                     <td>{{ $item->title }}</td>
                     <td>{{ $item->artist }}</td>
-                    <td><a href="{{ $item->link }}">{{ $item->link }}</a></td>
+                    <td><a href="{{ $item->link }}" target="_blank">{{ $item->link }}</a></td>
                     <td>
                         <a href="{{ url('/songs/' . $item->id) }}" class="btn btn-success btn-xs" title="View Song"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
                         <a href="{{ url('/songs/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Song"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
