@@ -20,3 +20,4 @@ Route::get('/profile', 'HomeController@index');
 Route::resource('events', 'EventsController');
 Route::resource('songs', 'SongsController');
 Route::resource('users', 'UsersController');
+Route::resource('videos', 'VideosController');
